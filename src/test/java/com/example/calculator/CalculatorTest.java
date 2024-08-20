@@ -7,47 +7,47 @@ public class CalculatorTest {
     private final Calculator calculator = new Calculator();
 
     @Test
-    public void testAddition() {
+    public void testAddition() throws Exception {
         assertEquals(new BigDecimal("8"), calculator.evaluate("3 + 5"));
     }
 
     @Test
-    public void testSubtraction() {
+    public void testSubtraction() throws Exception {
         assertEquals(new BigDecimal("4"), calculator.evaluate("9 - 5"));
     }
 
     @Test
-    public void testMultiplication() {
+    public void testMultiplication() throws Exception {
         assertEquals(new BigDecimal("20"), calculator.evaluate("4 * 5"));
     }
 
     @Test
-    public void testDivision() {
+    public void testDivision() throws Exception {
         assertEquals(new BigDecimal("3"), calculator.evaluate("9 / 3"));
     }
 
     @Test
-    public void testPower() {
+    public void testPower() throws Exception {
         assertEquals(new BigDecimal("8"), calculator.evaluate("2 ^ 3"));
     }
 
     @Test
-    public void testSquareRoot() {
+    public void testSquareRoot() throws Exception {
         assertEquals(new BigDecimal("4"), calculator.evaluate("sqrt 16"));
     }
 
     @Test
-    public void testLogarithm() {
+    public void testLogarithm() throws Exception {
         assertEquals(new BigDecimal("2.302585092994046"), calculator.evaluate("log 10").setScale(15, BigDecimal.ROUND_HALF_UP));
     }
 
     @Test
-    public void testSine() {
+    public void testSine() throws Exception {
         assertEquals(new BigDecimal("0.5"), calculator.evaluate("sin 30").setScale(1, BigDecimal.ROUND_HALF_UP));
     }
 
     @Test
-    public void testCosine() {
+    public void testCosine() throws Exception {
         assertEquals(new BigDecimal("0.5"), calculator.evaluate("cos 60").setScale(1, BigDecimal.ROUND_HALF_UP));
     }
 
