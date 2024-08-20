@@ -1,36 +1,45 @@
-package com.example.calculator;
-
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
+package com.example;
 
 public class Calculator {
 
-    // 用于执行计算
-    public BigDecimal evaluate(String expression) throws Exception {
-        String[] tokens = expression.split(" ");
-        if (tokens.length != 3) {
-            throw new Exception("Invalid expression");
-        }
+    // 加法
+    public double add(double a, double b) {
+        return a + b;
+    }
 
-        BigDecimal num1 = new BigDecimal(tokens[0]);
-        String operator = tokens[1];
-        BigDecimal num2 = new BigDecimal(tokens[2]);
+    // 减法
+    public double subtract(double a, double b) {
+        return a - b;
+    }
 
-        switch (operator) {
-            case "+":
-                return num1.add(num2);
-            case "-":
-                return num1.subtract(num2);
-            case "*":
-                return num1.multiply(num2);
-            case "/":
-                if (num2.compareTo(BigDecimal.ZERO) == 0) {
-                    throw new Exception("Division by zero");
-                }
-                return num1.divide(num2, MathContext.DECIMAL128);
-            default:
-                throw new Exception("Invalid operator");
+    // 乘法
+    public double multiply(double a, double b) {
+        return a * b;
+    }
+
+    // 除法
+    public double divide(double a, double b) throws ArithmeticException {
+        if (b == 0) {
+            throw new ArithmeticException("Cannot divide by zero");
         }
+        return a / b;
+    }
+
+    // 幂运算
+    public double power(double base, double exponent) {
+        return Math.pow(base, exponent);
+    }
+
+    // 平方根
+    public double sqrt(double value) {
+        if (value < 0) {
+            throw new ArithmeticException("Cannot calculate square root of a negative number");
+        }
+        return Math.sqrt(value);
+    }
+
+    // 归零
+    public double reset() {
+        return 0;
     }
 }
