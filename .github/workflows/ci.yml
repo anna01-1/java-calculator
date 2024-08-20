@@ -32,8 +32,8 @@ jobs:
         name: calculator-jar
         path: target/*.jar
 
-    - name: Upload test results
+    - name: Upload test report
       uses: actions/upload-artifact@v3
       with:
-        name: test-results
+        name: test-report
         path: target/surefire-reports/
