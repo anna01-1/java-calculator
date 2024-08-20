@@ -1,106 +1,61 @@
-package com.example.calculator;
+package com.example;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import java.math.BigDecimal;
+import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
 
-    private final Calculator calculator = new Calculator();
-
-    // 测试加法
     @Test
-    public void testAddition() throws Exception {
-        assertEquals(new BigDecimal("8"), calculator.evaluate("3 + 5"));
+    public void testAdd() {
+        Calculator calculator = new Calculator();
+        assertEquals(5, calculator.add(2, 3));
     }
 
-    // 测试减法
     @Test
-    public void testSubtraction() throws Exception {
-        assertEquals(new BigDecimal("4"), calculator.evaluate("9 - 5"));
+    public void testSubtract() {
+        Calculator calculator = new Calculator();
+        assertEquals(1, calculator.subtract(5, 4));
     }
 
-    // 测试乘法
     @Test
-    public void testMultiplication() throws Exception {
-        assertEquals(new BigDecimal("20"), calculator.evaluate("4 * 5"));
+    public void testMultiply() {
+        Calculator calculator = new Calculator();
+        assertEquals(6, calculator.multiply(2, 3));
     }
 
-    // 测试除法
     @Test
-    public void testDivision() throws Exception {
-        assertEquals(new BigDecimal("3"), calculator.evaluate("9 / 3"));
+    public void testDivide() {
+        Calculator calculator = new Calculator();
+        assertEquals(2, calculator.divide(6, 3));
     }
 
-    // 测试除以零
     @Test
-    public void testDivisionByZero() {
-        Exception exception = assertThrows(Exception.class, () -> {
-            calculator.evaluate("1 / 0");
-        });
-        assertEquals("Division by zero", exception.getMessage());
+    public void testDivideByZero() {
+        Calculator calculator = new Calculator();
+        assertThrows(ArithmeticException.class, () -> calculator.divide(1, 0));
     }
 
-    // 测试无效表达式
     @Test
-    public void testInvalidExpression() {
-        Exception exception = assertThrows(Exception.class, () -> {
-            calculator.evaluate("3 + + 5");
-        });
-        assertEquals("Invalid expression", exception.getMessage());
+    public void testPower() {
+        Calculator calculator = new Calculator();
+        assertEquals(9, calculator.power(3, 2));
     }
 
-    // 测试无效操作符
     @Test
-    public void testInvalidOperator() {
-        Exception exception = assertThrows(Exception.class, () -> {
-            calculator.evaluate("3 ^ 5");
-        });
-        assertEquals("Invalid operator", exception.getMessage());
+    public void testSqrt() {
+        Calculator calculator = new Calculator();
+        assertEquals(3, calculator.sqrt(9));
     }
 
-    // 测试浮点数加法
     @Test
-    public void testFloatingPointAddition() throws Exception {
-        assertEquals(new BigDecimal("5.5"), calculator.evaluate("2.5 + 3.0"));
+    public void testSqrtNegative() {
+        Calculator calculator = new Calculator();
+        assertThrows(ArithmeticException.class, () -> calculator.sqrt(-1));
     }
 
-    // 测试浮点数减法
     @Test
-    public void testFloatingPointSubtraction() throws Exception {
-        assertEquals(new BigDecimal("1.5"), calculator.evaluate("5.5 - 4.0"));
-    }
-
-    // 测试浮点数乘法
-    @Test
-    public void testFloatingPointMultiplication() throws Exception {
-        assertEquals(new BigDecimal("7.5"), calculator.evaluate("2.5 * 3.0"));
-    }
-
-    // 测试浮点数除法
-    @Test
-    public void testFloatingPointDivision() throws Exception {
-        assertEquals(new BigDecimal("2.0"), calculator.evaluate("6.0 / 3.0"));
-    }
-
-    // 测试无效表达式格式
-    @Test
-    public void testInvalidExpressionFormat() {
-        Exception exception = assertThrows(Exception.class, () -> {
-            calculator.evaluate("3 + ");
-        });
-        assertEquals("Invalid expression", exception.getMessage());
-    }
-
-    // 测试多余的空格
-    @Test
-    public void testExtraSpaces() throws Exception {
-        assertEquals(new BigDecimal("10"), calculator.evaluate("  4   +   6  "));
-    }
-
-    // 测试不同的数字分隔符
-    @Test
-    public void testDifferentDecimalSeparator() throws Exception {
-        assertEquals(new BigDecimal("5.75"), calculator.evaluate("2.5 + 3.25"));
+    public void testReset() {
+        Calculator calculator = new Calculator();
+        assertEquals(0, calculator.reset());
     }
 }
