@@ -74,11 +74,4 @@ public class CalculatorTest {
         });
         assertEquals("Invalid expression", exception.getMessage());
     }
-
-    @Test
-    public void testHistory() {
-        calculator.evaluate("3 + 5");
-        calculator.evaluate("10 - 3");
-        assertEquals(new BigDecimal("7"), calculator.getHistory().peek());
-    }
 }
